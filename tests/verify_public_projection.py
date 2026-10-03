@@ -4,6 +4,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def fail(x): raise SystemExit('FAIL: '+x)
 m=json.loads((ROOT/'PUBLIC_MANIFEST.json').read_text())
 if m.get('schema')!='UBUILDOS_PUBLIC_PROJECTION_MANIFEST_V1': fail('manifest schema')
+if m.get('projection_version')!='1.0.1': fail('projection version')
 records=m.get('files',[])
 if m.get('population')!=len(records): fail('population')
 seen=set()
@@ -37,8 +38,14 @@ required=[
 for token in required:
     if token not in post: fail('linkedin semantic token: '+token)
 life=(ROOT/'LIFECYCLE_STATUS.md').read_text()
-for token in ['Fresh Independent IQA: PASS','Owner accepted: YES','Frozen: YES','Public repository: NOT YET PUBLISHED','Terminal campaign closeout: NOT YET COMPLETE']:
+for token in ['Frozen product Fresh Independent IQA: PASS','Owner accepted: YES','Frozen: YES','Public-projection successor: `v1.0.1`','Public-projection successor Fresh Independent IQA: NOT YET PERFORMED','Terminal campaign closeout: NOT YET COMPLETE']:
     if token not in life: fail('lifecycle token: '+token)
 readme=(ROOT/'README.md').read_text()
 if '3a675b33d2733f99ca5e3c3a634dc9563354db576672d7409cb9730a7f83a330' not in readme: fail('frozen identity')
+carousel=ROOT/'UBUILDOS_DAY11_LINKEDIN_CAROUSEL_v1.0.5.pdf'
+if not carousel.is_file(): fail('successor carousel missing')
+if hashlib.sha256(carousel.read_bytes()).hexdigest()!='ee9162a13af043feb0d323631c3c157ad231489d3b5a931a82113608252c9c1e': fail('successor carousel identity')
+for p in [ROOT/'LIFECYCLE_STATUS.md',ROOT/'PUBLICATION_GATE.md',ROOT/'docs/VERIFICATION_SUMMARY.md']:
+    t=p.read_text()
+    if 'Public-projection successor Fresh Independent IQA: PASS' in t or 'Projection Fresh Independent IQA: PASS' in t or 'projection Fresh Independent IQA: PASS' in t: fail('projection IQA overclaim '+p.name)
 print('PUBLIC_PROJECTION_VERIFY_PASS')

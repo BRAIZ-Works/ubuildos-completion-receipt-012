@@ -1,13 +1,16 @@
 # Day 11 Public Projection Release Notes
 
-## Public Projection v1.0.0
+## Public Projection v1.0.1
 
-Prepared from the exact owner-accepted/frozen Day-11 v1.0.4 product subject.
+Successor to failed public projection v1.0.0. The failed predecessor remains immutable evidence.
 
-Public-projection preparation:
-- preserves the frozen product identity without publishing the protected product package itself;
-- removes private control-plane/plan evidence from the outward projection;
-- preserves product logic, synthetic demo data, public tests, methodology, limitations, security/privacy/accessibility documentation, and final carousel;
-- includes public-safe Fresh-IQA/freeze and visual-lineage receipts;
-- prebinds the intended Day-11 repository/live URLs;
-- does not claim publication, deployment, observation, LinkedIn publication, or terminal closeout.
+Bounded repairs:
+- replaces the incomplete six-page LinkedIn carousel with the fully populated `UBUILDOS_DAY11_LINKEDIN_CAROUSEL_v1.0.5.pdf`;
+- removes the predecessor's ambiguous projection-level Fresh-IQA PASS wording and distinguishes frozen-product IQA from successor-projection IQA;
+- updates manifest, checksum, verifier, and mutation controls for the successor population;
+- preserves the frozen Day-11 product SHA-256 unchanged;
+- does not claim Fresh IQA, publication, deployment, observation, LinkedIn publication, or terminal closeout for this successor.
+
+## Public Projection v1.0.0 — FAILED PREDECESSOR
+
+Fresh Independent IQA: FAIL. Release-blocking carousel visual-completeness defect and premature projection-IQA lifecycle claim. Preserved; not eligible for publication as the final Day-11 projection.

@@ -10,8 +10,8 @@ The workflow evaluates four explicit fields: fit, need, timing, and next step. M
 - Qualification logic: `src/qualification.js`
 - Synthetic data: `src/data.js`
 - Qualification tests: `tests/qualification.test.mjs`
-- Integrity/semantic verifier: `tests/verify.py`
-- Mutation controls: `tests/mutation_tests.py`
+- Integrity/semantic verifier: `tests/verify_public_projection.py`
+- Mutation controls: `tests/mutation_public_projection.py`
 - Methodology: `docs/METHODOLOGY.md`
 - Limitations: `docs/LIMITATIONS.md`
 - Accessibility: `docs/ACCESSIBILITY.md`
@@ -24,7 +24,7 @@ The frozen Day-11 product subject passed structurally separate Fresh Independent
 Exact frozen subject SHA-256:
 `3a675b33d2733f99ca5e3c3a634dc9563354db576672d7409cb9730a7f83a330`
 
-This repository is a public projection of that frozen product. Publication/deployment status is tracked separately in `LIFECYCLE_STATUS.md` and `PUBLICATION_GATE.md`.
+This repository package is public-projection successor `v1.0.1` derived from that frozen product. The frozen product's IQA status does not establish IQA for this projection successor. Projection publication/deployment status is tracked separately in `LIFECYCLE_STATUS.md` and `PUBLICATION_GATE.md`.
 
 ## Boundaries
 
