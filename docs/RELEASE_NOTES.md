@@ -1,16 +1,29 @@
 # Day 11 Public Projection Release Notes
 
-## Public Projection v1.0.1
+## Public Projection v1.0.2 — documentation-currentness successor
 
-Successor to failed public projection v1.0.0. The failed predecessor remains immutable evidence.
+Bounded successor to independently reviewed and deployed public projection v1.0.1.
 
-Bounded repairs:
-- replaces the incomplete six-page LinkedIn carousel with the fully populated `UBUILDOS_DAY11_LINKEDIN_CAROUSEL_v1.0.5.pdf`;
-- removes the predecessor's ambiguous projection-level Fresh-IQA PASS wording and distinguishes frozen-product IQA from successor-projection IQA;
-- updates manifest, checksum, verifier, and mutation controls for the successor population;
-- preserves the frozen Day-11 product SHA-256 unchanged;
-- does not claim Fresh IQA, publication, deployment, observation, LinkedIn publication, or terminal closeout for this successor.
+Changes:
+- rewrites `README.md` as a durable public-facing repository introduction;
+- records the exact Fresh-IQA-PASS identity of public projection v1.0.1;
+- records the exact v1.0.1 repository deployment commit;
+- reconciles lifecycle/publication documentation so already-completed v1.0.1 events are not described as pending;
+- preserves product UI, qualification logic, synthetic data, and repaired carousel bytes unchanged;
+- does not claim Fresh IQA, publication, Pages observation, LinkedIn publication, or terminal closeout for v1.0.2.
 
-## Public Projection v1.0.0 — FAILED PREDECESSOR
+## Public Projection v1.0.1 — Fresh-IQA-PASS deployed predecessor
 
-Fresh Independent IQA: FAIL. Release-blocking carousel visual-completeness defect and premature projection-IQA lifecycle claim. Preserved; not eligible for publication as the final Day-11 projection.
+Subject SHA-256:
+`685ad609e7c76a8a9de6ec61604ed96652a74d5ffa2f11ccc57fb5a08ec98952`
+
+Fresh Independent IQA: PASS
+IQA repairs: 0
+Repository deployment commit:
+`afb8c5e473df1d4cf027b9fe18ce56cf4b28c5e9`
+
+The successor carousel `UBUILDOS_DAY11_LINKEDIN_CAROUSEL_v1.0.5.pdf` is preserved unchanged in v1.0.2.
+
+## Public Projection v1.0.0 — failed predecessor
+
+Fresh Independent IQA: FAIL because of incomplete carousel visual regions and a premature projection-level IQA claim. Preserved as failed lineage and not eligible as the final Day-11 projection.

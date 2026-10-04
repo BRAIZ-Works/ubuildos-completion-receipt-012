@@ -7,7 +7,7 @@ def reindex(root):
     rec=[]
     for p in files:
         b=p.read_bytes(); rel=p.relative_to(root).as_posix(); rec.append({'path':rel,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
-    man={'schema':'UBUILDOS_PUBLIC_PROJECTION_MANIFEST_V1','projection_version':'1.0.1','frozen_product_sha256':'3a675b33d2733f99ca5e3c3a634dc9563354db576672d7409cb9730a7f83a330','population':len(rec),'files':rec}
+    man={'schema':'UBUILDOS_PUBLIC_PROJECTION_MANIFEST_V1','projection_version':'1.0.2','frozen_product_sha256':'3a675b33d2733f99ca5e3c3a634dc9563354db576672d7409cb9730a7f83a330','population':len(rec),'files':rec}
     (root/'PUBLIC_MANIFEST.json').write_text(json.dumps(man,indent=2,sort_keys=True)+'\n')
     (root/'SHA256SUMS.txt').write_text(''.join(f"{r['sha256']}  {r['path']}\n" for r in rec))
 def case(name,edit,reindex_after=False):
@@ -22,11 +22,14 @@ cases=[
  ('delete_index',lambda r:(r/'index.html').unlink(),False),
  ('modify_index',lambda r:(r/'index.html').write_text((r/'index.html').read_text()+'\nmutated'),False),
  ('delete_manifest',lambda r:(r/'PUBLIC_MANIFEST.json').unlink(),False),
+ ('delete_carousel',lambda r:(r/'UBUILDOS_DAY11_LINKEDIN_CAROUSEL_v1.0.5.pdf').unlink(),False),
  ('hidden_scoring_rehashed',lambda r:(r/'LINKEDIN_POST.md').write_text((r/'LINKEDIN_POST.md').read_text().replace('No hidden scoring.','Hidden scoring is allowed.')),True),
  ('remove_review_rehashed',lambda r:(r/'LINKEDIN_POST.md').write_text((r/'LINKEDIN_POST.md').read_text().replace('If evidence is missing, invalid, or contradictory, it goes to REVIEW.','Missing evidence may qualify automatically.')),True),
- ('lifecycle_overclaim_rehashed',lambda r:(r/'LIFECYCLE_STATUS.md').write_text((r/'LIFECYCLE_STATUS.md').read_text().replace('Terminal campaign closeout: NOT YET COMPLETE','Terminal campaign closeout: COMPLETE')),True),
+ ('v102_iqa_overclaim_rehashed',lambda r:(r/'LIFECYCLE_STATUS.md').write_text((r/'LIFECYCLE_STATUS.md').read_text().replace('Fresh Independent IQA: NOT YET PERFORMED','v1.0.2 Fresh Independent IQA: PASS',1)),True),
+ ('v102_closeout_overclaim_rehashed',lambda r:(r/'LIFECYCLE_STATUS.md').write_text((r/'LIFECYCLE_STATUS.md').read_text().replace('terminal campaign closeout: NOT YET COMPLETE','Terminal campaign closeout: COMPLETE')),True),
+ ('remove_v101_deploy_commit_rehashed',lambda r:(r/'README.md').write_text((r/'README.md').read_text().replace('afb8c5e473df1d4cf027b9fe18ce56cf4b28c5e9','missing-deployment-commit')),True),
+ ('remove_v101_iqa_hash_rehashed',lambda r:(r/'README.md').write_text((r/'README.md').read_text().replace('685ad609e7c76a8a9de6ec61604ed96652a74d5ffa2f11ccc57fb5a08ec98952','missing-v101-iqa-hash')),True),
  ('remove_live_label_rehashed',lambda r:(r/'LINKEDIN_POST.md').write_text((r/'LINKEDIN_POST.md').read_text().replace('Live build: ','Build: ')),True),
- ('projection_iqa_overclaim_rehashed',lambda r:(r/'LIFECYCLE_STATUS.md').write_text((r/'LIFECYCLE_STATUS.md').read_text().replace('Public-projection successor Fresh Independent IQA: NOT YET PERFORMED','Public-projection successor Fresh Independent IQA: PASS')),True),
  ('carousel_corruption_rehashed',lambda r:(r/'UBUILDOS_DAY11_LINKEDIN_CAROUSEL_v1.0.5.pdf').write_bytes(b'%PDF-1.4\n%%EOF\n'),True),
 ]
 for x in cases: case(*x)
